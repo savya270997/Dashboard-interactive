@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Dashboard</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="sidebar">
+        <div style="display: grid">
+          <i class="margin_auto"
+            ><img src="/images/icons8-total-sales-100.png" alt=""
+          /></i>
+          <div class="sidebar-brand">Sales Management</div>
+        </div>
+
+        <ul class="sidebar-nav">
+          <li class="nav-item">
+            <a href="/index.html"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#"><i class="fas fa-user"></i> Profile</a>
+          </li>
+          <li class="nav-item has-submenu">
+            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+            <ul class="submenu">
+              <li class="submenu-item">
+                <a href="#"><i class="fas fa-sliders-h"></i> General</a>
+              </li>
+              <li class="submenu-item">
+                <a href="#"><i class="fas fa-user-cog"></i> Account</a>
+              </li>
+              <li class="submenu-item">
+                <a href="#"><i class="fas fa-shield-alt"></i> Privacy</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="content-wrapper">
+        <div class="topbar">
+          <div class="hamburger-menu">&#9776;</div>
+          <div class="logo">
+            <span> Dashboard</span>
+          </div>
+
+          <div class="search-bar">
+            <input type="text" placeholder="Search..." />
+          </div>
+          <div class="profile-section">
+            <img
+              src="/images/307ce493-b254-4b2d-8ba4-d12c080d6651.jpg"
+              alt="Profile"
+              class="avatar"
+            />
+            <div class="profile-menu">
+              <button id="editProfileBtn">Edit Profile</button>
+              <button id="logoutBtn">Logout</button>
+            </div>
+          </div>
+          <div class="dark-mode-switch">
+            <label class="switch">
+              <input type="checkbox" id="darkModeToggle" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="main-content">
+          <div class="stats-cards">
+            <div class="stat-card">
+              <h3>New Leads</h3>
+              <div class="sales-number">1,234</div>
+              <div class="sales-change">
+                <span class="up-arrow">&#9650;</span>
+                <span class="percentage">15%</span>
+                <span class="comparison">(V/s previous year)</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <h3>Sales Performance</h3>
+              <div class="sales-number">789</div>
+              <div class="sales-change negative">
+                <span class="down-arrow">&#9660;</span>
+                <span class="percentage">-10%</span>
+                <span class="comparison">(V/s previous year)</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <h3>Revenue</h3>
+              <div class="sales-number">$11,789</div>
+              <div class="sales-change negative">
+                <span class="down-arrow">&#9660;</span>
+                <span class="percentage">-8%</span>
+                <span class="comparison">(V/s previous year)</span>
+              </div>
+            </div>
+          </div>
+          <div class="graphMajor">
+            <div class="graph">
+              <h3>Monthly Sales Data</h3>
+              <canvas class="graph_margin" id="barChart"></canvas>
+            </div>
+            <div class="graph">
+              <h3>Sales Trend Over Time</h3>
+              <canvas class="graph_margin" id="lineChart"></canvas>
+            </div>
+            <div class="graph pie">
+              <h3>Sales Distribution by Product</h3>
+              <canvas id="pieChart"></canvas>
+            </div>
+            
+          </div>
+          <div class="graphMajor">
+            <div class="notification-center">
+              <div class="notification-header">
+                <h3>Notifications</h3>
+              </div>
+              <div class="notifications-content">
+                <ul class="notifications">
+                  <li>
+                    <i class="fas fa-dollar-sign icon green"></i> New sale:
+                    $1200
+                  </li>
+                  <li>
+                    <i class="fas fa-exchange-alt icon red"></i> Refund issued:
+                    $200
+                  </li>
+                  <li>
+                    <i class="fas fa-bullseye icon blue"></i> Quarterly target
+                    achieved
+                  </li>
+                  <li>
+                    <i class="fas fa-user-plus icon yellow"></i> New customer
+                    registered
+                  </li>
+                  <li>
+                    <i class="fas fa-dollar-sign icon green"></i> New sale: $950
+                  </li>
+                  <li>
+                    <i class="fas fa-dollar-sign icon green"></i> New sale: $450
+                  </li>
+                  <li>
+                    <i class="fas fa-exchange-alt icon red"></i> Refund issued:
+                    $100
+                  </li>
+                  <li>
+                    <i class="fas fa-bullseye icon blue"></i> Monthly target
+                    achieved
+                  </li>
+                  <li>
+                    <i class="fas fa-user-plus icon yellow"></i> New customer
+                    registered
+                  </li>
+                  <li>
+                    <i class="fas fa-dollar-sign icon green"></i> New sale: $600
+                  </li>
+                  <li>
+                    <i class="fas fa-exchange-alt icon red"></i> Refund issued:
+                    $300
+                  </li>
+                  <li>
+                    <i class="fas fa-bullseye icon blue"></i> Quarterly target
+                    achieved
+                  </li>
+                  <li>
+                    <i class="fas fa-dollar-sign icon green"></i> New sale:
+                    $1200
+                  </li>
+                  <li>
+                    <i class="fas fa-exchange-alt icon red"></i> Refund issued:
+                    $200
+                  </li>
+                  <li>
+                    <i class="fas fa-bullseye icon blue"></i> Quarterly target
+                    achieved
+                  </li>
+                  <li>
+                    <i class="fas fa-user-plus icon yellow"></i> New customer
+                    registered
+                  </li>
+                  <li>
+                    <i class="fas fa-dollar-sign icon green"></i> New sale: $950
+                  </li>
+                  <li>
+                    <i class="fas fa-dollar-sign icon green"></i> New sale: $450
+                  </li>
+                  <li>
+                    <i class="fas fa-exchange-alt icon red"></i> Refund issued:
+                    $100
+                  </li>
+                  <li>
+                    <i class="fas fa-bullseye icon blue"></i> Monthly target
+                    achieved
+                  </li>
+                  <li>
+                    <i class="fas fa-user-plus icon yellow"></i> New customer
+                    registered
+                  </li>
+                  <li>
+                    <i class="fas fa-dollar-sign icon green"></i> New sale: $600
+                  </li>
+                  <li>
+                    <i class="fas fa-exchange-alt icon red"></i> Refund issued:
+                    $300
+                  </li>
+                  <li>
+                    <i class="fas fa-bullseye icon blue"></i> Quarterly target
+                    achieved
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="notification-center">
+              <table class="sales-table">
+                <caption>Sales Performance and Targets</caption>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Sales</th>
+                    <th>Target</th>
+                    <th>Target Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>John Doe</td>
+                    <td>$15,000</td>
+                    <td>$20,000</td>
+                    <td><span class="badge achieved">Yes</span></td>
+                  </tr>
+                  <tr>
+                    <td>Jane Smith</td>
+                    <td>$18,000</td>
+                    <td>$22,000</td>
+                    <td><span class="badge achieved">Yes</span></td>
+                  </tr>
+                  <tr>
+                    <td>Michael Brown</td>
+                    <td>$12,000</td>
+                    <td>$15,000</td>
+                    <td><span class="badge not-achieved">No</span></td>
+                  </tr>
+                  <tr>
+                    <td>Emily Davis</td>
+                    <td>$21,000</td>
+                    <td>$25,000</td>
+                    <td><span class="badge achieved">Yes</span></td>
+                  </tr>
+                  <tr>
+                    <td>David Johnson</td>
+                    <td>$16,000</td>
+                    <td>$18,000</td>
+                    <td><span class="badge achieved">Yes</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+        </div>
+        </div>
+      </div>
+    </div>
+    <script src="
+https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
+"></script>
+    <script src="/menu.js"></script>
+    <script src="/graph.js"></script>
+    <script src="/script.js"></script>
+  </body>
+</html>
